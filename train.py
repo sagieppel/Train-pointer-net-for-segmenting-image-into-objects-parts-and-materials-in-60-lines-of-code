@@ -8,7 +8,9 @@ import torchvision.transforms as tf
 Learning_Rate=1e-5
 width=height=800 # image width and height
 batchSize=4 
-TrainFolder="/media/breakeroftime/2T/Data_zoo/LabPicsV1.2/Simple/Train/"
+device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
+
+TrainFolder="LabPicsV1.2/Simple/Train/"
 ListImages=os.listdir(os.path.join(TrainFolder, "Image")) # Create list of images
 #----------------------------------------------Transform image-------------------------------------------------------------------
 transformImg=tf.Compose([tf.ToPILImage(),tf.Resize((height,width)),tf.ToTensor(),tf.Normalize((0.485, 0.456, 0.406), (0.229, 0.224, 0.225))]) # preprocces image
@@ -43,7 +45,6 @@ def LoadBatch(): # Load batch of images
         images[i],ann[i]=ReadRandomImage()
     return images, ann
 #--------------Load and set net and optimizer-------------------------------------
-device = torch.device('cuda') if torch.cuda.is_available() else torch.device('cpu')
 Net = torchvision.models.segmentation.deeplabv3_resnet50(pretrained=True) # Load net
 Net.classifier[4] = torch.nn.Conv2d(256, 2, kernel_size=(1, 1), stride=(1, 1)) # Change final layer to 2 classes (0/1)
 weights=Net.backbone.conv1.weight.data
