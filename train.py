@@ -60,7 +60,6 @@ for itr in range(0,100000): # Training loop
    Pred=Net(images)['out']# make prediction
    Net.zero_grad()
    criterion = torch.nn.CrossEntropyLoss() # Set loss function
-   pr = (Pred[0][1] > Pred[0][0]).cpu().detach().numpy() # convert probability mask to material mask
    Loss=criterion(Pred,ann.long()) # Calculate cross entropy loss
    Loss.backward() # Backpropogate loss
    optimizer.step() # Apply gradient descent change to weight
