@@ -6,5 +6,5 @@ Detail on the code and instructions for how to train this code can be found here
 Pretrained model can be download here [https://icedrive.net/s/Pu3FRwWN7vbPyutP9Z49C3BZG9Vg]
 
 Testing: 
-(Download pretrain model)[https://icedrive.net/s/Pu3FRwWN7vbPyutP9Z49C3BZG9Vg] into the main code script (or train yourself), run the test script.
+[Download pretrain model](https://icedrive.net/s/Pu3FRwWN7vbPyutP9Z49C3BZG9Vg) into the main code script (or train yourself), run the test script.
 
